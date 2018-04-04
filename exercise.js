@@ -4,8 +4,10 @@ var exercise = {};
 exercise.distance = function(p1,p2){
     //-------------------
     //---- Your Code ----
-    //-------------------    
-    return 'Error: 1st function not implemented';    
+    //-------------------
+    var dx = p1.x - p2.x;
+    var dy = p1.y - p2.y;  
+    return Math.sqrt( dx*dx + dy*dy );    
 };
 
 // calculate distance between new point and existing
@@ -13,15 +15,22 @@ exercise.distances = function(newPoint,data){
     //-------------------
     //---- Your Code ----
     //-------------------
-    return 'Error: 2nd function not implemented';
+    data.forEach(element => {
+        var dx = element.x - newPoint.x;
+        var dy = element.y - newPoint.y;  
+        element.distance= Math.sqrt( dx*dx + dy*dy );
+    });
+    return data;
 };
-
 // find k closest points
 exercise.findClosest = function(k,data){
     //-------------------
     //---- Your Code ----
     //------------------- 
-    return 'Error: 3rd function not implemented';    
+    data.sort((a,b)=>{
+        return a.distance - b.distance;
+    });
+    return data.slice(0,k);    
 };
 
 module.exports = exercise;
